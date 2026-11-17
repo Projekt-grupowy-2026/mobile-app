@@ -20,4 +20,26 @@ Szczegółowy opis roli repozytorium w projekcie znajduje się w katalogu [`docs
 
 ## Stack technologiczny
 
-Do ustalenia przez zespół.
+Aplikacja rozwijana jest w modelu hybrydowym, łączącym wydajność rozwiązań natywnych z elastycznością frameworków cross-platformowych.
+
+*   **Natywnie (Android):** Kotlin (Jetpack Compose) oraz Java (Android Studio).
+*   **Cross-platform:** React Native (wsparcie dla iOS oraz współdzielone moduły biznesowe).
+*   **Wspierane platformy:** Android (API 26+), iOS (14.0+).
+*   **Komunikacja:** REST API (Retrofit / Axios), WebSockets (do powiadomień o zmianach trasy w czasie rzeczywistym).
+*   **Baza danych:** Room / SQLite (do przechowywania danych w trybie offline).
+
+## Lokalizacja i praca w tle
+
+Aplikacja została zaprojektowana z myślą o niezawodnym śledzeniu floty w trudnych warunkach terenowych.
+
+*   **Częstotliwość wysyłania:** Lokalizacja GPS oraz aktualna prędkość są przesyłane do systemu co **30 sekund**.
+*   **Praca w tle:** Wykorzystanie **Foreground Service** z powiadomieniem pozwala na nieprzerwane zbieranie danych GPS, nawet gdy aplikacja nie jest na pierwszym planie lub urządzenie jest zablokowane.
+*   **Brak zasięgu (Offline Mode):** W przypadku utraty połączenia z siecią (np. w tunelach lub na terenach pozamiejskich), aplikacja buforuje współrzędne w lokalnej bazie danych. Po odzyskaniu dostępu do internetu, zgromadzone punkty są przesyłane zbiorczo do serwera z zachowaniem poprawnej chronologii.
+
+## Biblioteka map
+
+Do wizualizacji trasy i nawigacji wykorzystujemy:
+
+*   **Google Maps SDK for Android/iOS:** Główny silnik renderujący mapy.
+*   **react-native-maps:** Komponent integrujący mapy w części cross-platformowej aplikacji.
+*   **Google Directions API:** Do wyznaczania i optymalizacji trasy przejazdu.

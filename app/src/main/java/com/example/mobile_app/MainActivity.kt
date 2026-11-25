@@ -20,10 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MobileappTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    GpsScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

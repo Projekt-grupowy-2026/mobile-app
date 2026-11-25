@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Local Claude Code instructions (kept only on my machine)
+CLAUDE.md
